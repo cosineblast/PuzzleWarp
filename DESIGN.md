@@ -283,6 +283,7 @@ After some time, the player will be allowed to imagine more than just bubbles.
 
 ## Schrodinger Boxes
 
+### Parallel Universes
 The next concept in this game is the Schrodinger box.
 In the first level about this subject, the room gives the user two objects.
 One of them, is a superposition of two transformation spheres:
@@ -292,7 +293,6 @@ The second one, is able to convert a diamond into a 100 dollar bill.
 The second item the player is given, is a weird cardboard box, in which
 two sides of the box have images, one has the image of a ruby, and the other
 has the image of a diamond. On top of the box, there is a big red button.
-
 
 The target wall, asks for a dollar bill.
 
@@ -322,6 +322,20 @@ diamond, get the money, and use the money to clear the level.
 Once the player has finished the level in all parallel universes, the level is finished. \[2\]
 
 
+### Imagining Schrodinger Boxes
+
+After the player has finished some challenging levels about Schrodinger boxes, they should be
+given the ability to imagine Schrodinger boxes. To do so, is very simple, they just need
+to be holding an object, say, a flower, and start imagining. When they select that they wish to
+imagine a schrodinger box, they should select what is the other possibility for the box, they wish to imagine,
+say, a bucket.
+
+Then, after opening their eyes, the flower should be gone, and instead there will be a Schrodinger box
+that may either contain a flower or a bucket.
+Doing to is usually not advisable, since opening the box will create two parallel universes either way,
+but the player might need to do so to solve levels that ask for Schrodinger boxes as results. \[3\].
+
+
 ### Schrodinger Boxes Design Notes
 
 \[1\]. The game should probably indicate in the PU selection menu that a reality has already been solved.
@@ -329,42 +343,94 @@ Once the player has finished the level in all parallel universes, the level is f
 \[2\]. There should be some textual indication about the rule that the player must solve the level
 in all parallel universes it creates.
 
+\[3\]. It should be possible to turn more than one object into a Schrodinger box.
 
+A schrodinger box containing a ruby or a diamond is represented by ([Ruby Icon] + [Diamond Icon]).
+For instance, the first schrodinger box level has the following linear logic representation:
 
+- (Diamond + Ruby) × ((Diamond ⊸ Money) & (Ruby -o Money)) ⊢ Money
 
+## The final frontier: Imagine Transformation
 
-## Relationship with Linear Logic
+The next concept to be introduced is a very important one:
+The ability to imagine transformation spheres.
 
-This is an introductory text to regular, and linear logic.
+The first level that introduces this mechanic,
+provides no object, and asks for a transformation sphere that turns a bucket into a bucket.
 
-In normal logic, a formula is a mathematical value that represents some affirmation, they
-usually involve symbols such as
-- ∧: Known as conjunction, means "and",
-- ∨: Known as disjunction, means "or"
-- →: Known as implication, means "implies"
-- ¬: Known as negation, and means "not",
+The player, gains one more thing they are allowed to imagine: transformation orb.
+When the player selects the transformation orb in the imagination menu, they may select
+what are the inputs of that orb, and what are the outputs.
 
-So one can state something like "If it is (R)aining, then there will be (C)olds and (P)onds"
-as "R → (C ∧ P)" (we use single-letter abreviations in math and logic).
+After confirming, the player is taken to another room, the inputs of such room, and
+the outputs of that room, are exactly as the player has selected earlier.
 
-However, in linear logic, formulas don't exactly represent affirmations, but instead,
-they represent resources, and transformations.
-Additionally, linear logic has a different and greater roster of symbols (yay).
+The player might reset to leave this room at will, or they might try to complete the room.
+If the player completes the room, they are taken back to their original level,
+but in their hands, they will have a transformation sphere that represents what they have just thought.
 
-So in our interpretation of linear logic, things like [Frying Pan Icon] and [Pillow Icon]
-are formulas.
+In other words: If the player is able to imagine a certain transformation and complete it, they
+can have access to a transformation sphere that represents that transformation.
 
-In regular logic, altough formulas represent affirmations, they are not claims
-by themselves. This is specially true in linear logic, as formulas now represent objects,
-and saying something like [Bucket Icon] doesn't really sound like a claim.
+So to solve the mentioned level, the player must imagine a transformation that takes a bucket and yields a bucket,
+and then materialize that into a transformation orb, and use that orb to finish the level.
 
-So in both logics, we have the concept of sequent. A sequent is a proper mathematical claim
-about two (or more) formulas.
-They are of form "A ⊢ B", (where A and B are formulas), and in linear logic, it means
-that "It is possible to transform A into B".
+The following levels introduce the fact that the player may also take objects with them,
+when they create a transformation sphere. If the player takes that object with them into that sphere,
+the object is gone from their original reality.
 
-In PuzzleWarp, every level is meant to represent a linear logic sequent, and the player,
-by solving the level, is proves that such claim is true.
+The inner room always follows the same rules as the outer rooms.
 
+This may lead to some of the most difficult levels of the game.
 
+For instance, imagine the following level:
+
+Bucket -o Bubble ⊢ (Bucket x Pillow) -o Pillow
+
+The player has a way of turning a Bucket into a bubble, and is asked for a transformation that
+turns a bucket and a pillow into a pillow.
+
+The player can take the orb with them into a room for the resulting transformation orb, and
+inside that room, use the given orb with the given bucket, to turn that into a bubble,
+then pop the bubble, and put the pillow where it is asked.
+
+### Extra: Imagine Superposition
+
+Optionally, the game may also provide the user with the ability to imagine the superposition of two objects.
+To do so, the player must be holding an object, begin imagination, then select what are the two objects
+they want to imagine a superposition betwen.
+After doing so, they are presented with two parallel universes for which they must solve.
+Both universes have the object they player was holding before imagining this, and each parallel universe
+asks the user to provide one of the objects to be superposed.
+
+Imagine the player has two superposition objects, one is a superposition between a bucket and a shoe,
+and the other, is the superposition between a bubble and a transformation sphere that turns shoes into sandals.
+
+The goal of this puzzle, is to produce the superposition between a bucket and a sandal.
+
+To do so, the player would have to take both given objects with them, into the imagination of the superposition,
+as described as above. Then, to get the superposition, the player would have to solve two rooms,
+in the first one, the player must provide a bucket, and in the second one, the player must provide a sandal.
+
+To solve the first room, the player may use the superposition between a bucket and a shoe, and turn that
+into a bucket. Then, the player turns the superposition between the bubble and the transformation orb,
+and turns that into a bubble, which the player then bursts. Now the player just has a bucket, as it as asked.
+
+Then, the player goes to the second parallel universe, in which they must provide a sandal.
+To do so, the player turns the bucket-shoe superposition into a shoe, and turns the bubble-orb superposition
+into the shoe-sandal orb. then, the player uses the orb with the shoe, and gets a sandal. The player then
+provides a sandal, and finishes this room.
+
+Now that both rooms are finished, the player may go back to their original reality, except both
+source items are gone, and now the player has the superposition they imagined. Then, the player
+may turn in the superposition and finish the level.
+
+## End of Part 1
+
+This is the upper bound for content to be implemented in this linear logic game.
+Linear logic has many other concepts, such as the superposition of all things (0),
+antimatter (negation), divine and speculative values (exponentials), and much more
+but these are the concepts I considered to be the most reasoable to play with and implement.
+
+And of course, the game should have a free-play to try out any level they imagine :)
 
