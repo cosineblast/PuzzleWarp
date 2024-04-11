@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=3 uid="uid://4jk5gup8hlit"]
+
+[ext_resource type="Texture2D" uid="uid://crdha8wih2bws" path="res://Assets/Kenney_Textures/PNG/Orange/texture_02.png" id="1_o4m5q"]
+[ext_resource type="Texture2D" uid="uid://cklx01yn0b4iy" path="res://Assets/Kenney_Textures/PNG/Orange/texture_01.png" id="1_u3ct7"]
+[ext_resource type="Texture2D" uid="uid://dhbv04npuiyn4" path="res://Assets/Kenney_Textures/PNG/Orange/texture_03.png" id="3_70aqp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc0px"]
+albedo_texture = ExtResource("1_u3ct7")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_h50qm"]
+material = SubResource("StandardMaterial3D_uc0px")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3c88"]
+albedo_texture = ExtResource("1_o4m5q")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yokqg"]
+material = SubResource("StandardMaterial3D_t3c88")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2dhcj"]
+albedo_texture = ExtResource("3_70aqp")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pldqh"]
+material = SubResource("StandardMaterial3D_2dhcj")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BasicOrange" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_h50qm")
+
+[node name="BasicOrange2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("BoxMesh_yokqg")
+
+[node name="BasicOrange3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("BoxMesh_pldqh")
