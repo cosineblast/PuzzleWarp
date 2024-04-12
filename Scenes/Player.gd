@@ -1,11 +1,14 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 7
+const JUMP_VELOCITY = 8
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = 20
+
+@onready
+var camera_pivot = $CameraPivot
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -40,6 +43,15 @@ func _unhandled_input(event):
 		var multiplier = 1.0/500.0
 		
 		var change = event.relative * multiplier
-			
-		rotation.x = clampf(-1, rotation.x - change.y, 1)
-		rotation.y = rotation.y - change.x
+		
+		# var axis = Vector3(0, 0, 1) * change.x
+		
+		# transform.basis = transform.basis.rotated(axis, 1)
+		
+		# transform.basis = transform.basis.rotated(Vector3(0, 1, 0), -change.x)
+		
+		
+		camera_pivot.rotate(Vector3(1, 0, 0), -change.y)
+		
+		rotate(Vector3(0, 1, 0), -change.x)
+		
