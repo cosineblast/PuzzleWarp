@@ -4,26 +4,33 @@ extends CharacterBody3D
 const SPEED = 7
 const JUMP_VELOCITY = 8
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 20
 
 @onready
-var camera_pivot = $CameraPivot
+var camera_pivot: Marker3D = $CameraPivot
+
+@onready
+var ray_cast: RayCast3D = $CameraPivot/RayCast3D
+
+@onready 
+var ideal_target_position: Marker3D = $CameraPivot/IdealTargetPosition
+
+var target_object: Node3D = null
+
+var target_object_snapshot = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
-	# Add the gravity.
+	_save_target_object_trasnform()
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	elif Input.is_action_just_pressed("ui_accept"):
+		velocity.y += JUMP_VELOCITY
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -35,23 +42,62 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	_update_target_object()
+	
 	
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
+		_handleMouseMotion(event)
+	
+	if event is InputEventMouseButton:
+		_handleMouseClick(event)
 		
-		var multiplier = 1.0/500.0
+func _handleMouseMotion(event: InputEventMouseMotion):
+	var multiplier = 1.0/500.0
 		
-		var change = event.relative * multiplier
+	var change = event.relative * multiplier
+
+	_save_target_object_trasnform()
+	
+	camera_pivot.rotate(Vector3(1, 0, 0), -change.y)	
+	rotate(Vector3(0, 1, 0), -change.x)	
+	
+	_update_target_object()
+	
+func _save_target_object_trasnform():
+	if target_object == null:
+		return
 		
-		# var axis = Vector3(0, 0, 1) * change.x
+	target_object_snapshot = target_object.global_transform
 		
-		# transform.basis = transform.basis.rotated(axis, 1)
+func _update_target_object():
+	if target_object == null:
+		return
 		
-		# transform.basis = transform.basis.rotated(Vector3(0, 1, 0), -change.x)
+	target_object.global_transform = ideal_target_position.global_transform	
+	
+	var would_collide_now = target_object.move_and_collide(Vector3.ZERO, true)
+	
+	if would_collide_now:
+		pass
+		target_object.global_transform = target_object_snapshot
+		
+	
+	
+	
+	
+func _handleMouseClick(event: InputEventMouseButton):
+	if event.pressed:
+		
+		var collider = ray_cast.get_collider()
+		
+		if collider == null:
+			return
+		
+		print("Picking object", collider)
+			
+		target_object = collider
 		
 		
-		camera_pivot.rotate(Vector3(1, 0, 0), -change.y)
-		
-		rotate(Vector3(0, 1, 0), -change.x)
-		
+

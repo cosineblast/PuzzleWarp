@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=6 format=3 uid="uid://22v1quftfdgq"]
 
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player.tscn" id="2_ypc0p"]
 [ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="3_lig0x"]
+[ext_resource type="PackedScene" uid="uid://2xtx0isyutid" path="res://Scenes/LogicObject.tscn" id="3_ngtw4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s33mq"]
-size = Vector3(15, 1, 10)
+size = Vector3(8.2264, 1, 7.46963)
 
 [sub_resource type="Environment" id="Environment_4eeoe"]
 background_mode = 1
@@ -20,7 +21,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1.
 [node name="Ground" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295779, -0.5, -0.5)
 shape = SubResource("BoxShape3D_s33mq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -36,3 +37,27 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4eeoe")
+
+[node name="Object1" parent="." instance=ExtResource("3_ngtw4")]
+transform = Transform3D(1, 0, 0, 0, 0.88037, 0.474288, 0, -0.474288, 0.88037, 0, 2.16317, 0)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(10, 10)
+render_target_update_mode = 4
+
+[node name="Object2" parent="." instance=ExtResource("3_ngtw4")]
+transform = Transform3D(0.962004, -0.220574, 0.160922, 0.273036, 0.777161, -0.566985, 0, 0.58938, 0.807856, 0, 0.938037, -1.30426)
