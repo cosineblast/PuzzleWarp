@@ -22,10 +22,10 @@ func _integrate_forces(state):
 	var difference = their_position - this_position
 	var direction = difference.normalized()
 	
-	var object_velocity = 5
+	var object_speed = difference.length() * 5
 	
 	if difference.length() > 0.1:
-		state.linear_velocity = direction * 5
+		state.linear_velocity = direction * object_speed
 	else:
 		state.linear_velocity *= 0
 		
