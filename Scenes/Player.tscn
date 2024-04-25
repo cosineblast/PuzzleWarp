@@ -19,11 +19,11 @@ mesh = ExtResource("2_eu0pl")
 [node name="CameraPivot" type="Marker3D" parent="."]
 
 [node name="IdealTargetPosition" type="Marker3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 cull_mask = 1048063
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraPivot"]
-target_position = Vector3(0, 0, -1.5)
+target_position = Vector3(0, 0, -2)
 debug_shape_custom_color = Color(1, 0, 1, 1)

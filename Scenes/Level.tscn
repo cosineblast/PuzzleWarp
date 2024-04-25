@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=8 format=3 uid="uid://22v1quftfdgq"]
 
+[ext_resource type="Script" path="res://Scenes/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player.tscn" id="2_ypc0p"]
 [ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="3_lig0x"]
 [ext_resource type="PackedScene" uid="uid://2xtx0isyutid" path="res://Scenes/LogicObject.tscn" id="3_ngtw4"]
+[ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI.tscn" id="6_1yu2i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s33mq"]
 size = Vector3(8.2264, 1, 7.46963)
@@ -13,7 +15,8 @@ background_color = Color(0.580392, 0.639216, 0.792157, 1)
 background_canvas_max_layer = 1
 ambient_light_color = Color(0.627451, 0.8, 0.984314, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="Root" type="Node3D"]
+script = ExtResource("1_kvcel")
 
 [node name="Player" parent="." instance=ExtResource("2_ypc0p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1.80377, -1)
@@ -41,7 +44,7 @@ environment = SubResource("Environment_4eeoe")
 [node name="Object1" parent="." instance=ExtResource("3_ngtw4")]
 transform = Transform3D(1, 0, 0, 0, 0.88037, 0.474288, 0, -0.474288, 0.88037, 0, 2.16317, 0)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="CrosshairContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -54,10 +57,32 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="CrosshairViewPort" type="SubViewport" parent="CrosshairContainer"]
 handle_input_locally = false
 size = Vector2i(10, 10)
 render_target_update_mode = 4
 
 [node name="Object2" parent="." instance=ExtResource("3_ngtw4")]
 transform = Transform3D(0.962004, -0.220574, 0.160922, 0.273036, 0.777161, -0.566985, 0, 0.58938, 0.807856, 0, 0.938037, -1.30426)
+
+[node name="ObjectGUIContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectGUI" type="SubViewport" parent="ObjectGUIContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(800, 500)
+render_target_update_mode = 0
+
+[node name="Control" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]

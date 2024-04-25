@@ -14,27 +14,31 @@ var ray_cast: RayCast3D = $CameraPivot/RayCast3D
 @onready 
 var ideal_target_position: Marker3D = $CameraPivot/IdealTargetPosition
 
+var ignore_input = false
+
 var target_object: RigidBody3D = null
 
+signal view_object(target)
+
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	elif Input.is_action_just_pressed("ui_accept"):
+	elif Input.is_action_just_pressed("ui_accept") and not ignore_input:
 		velocity.y += JUMP_VELOCITY
 
-	
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if not ignore_input:
+		var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
 
@@ -46,6 +50,9 @@ func _unhandled_input(event):
 		_handleMouseClick(event)
 		
 func _handleMouseMotion(event: InputEventMouseMotion):
+	if ignore_input:
+		return
+		
 	var multiplier = 1.0/500.0
 		
 	var change = event.relative * multiplier
@@ -57,14 +64,22 @@ func _handleMouseMotion(event: InputEventMouseMotion):
 	
 	
 func _handleMouseClick(event: InputEventMouseButton):
-	if event.pressed:
-		var collider = ray_cast.get_collider()
+	if ignore_input:
+		return
 		
-		if collider == null:
-			_drop_item()
+	if event.pressed:
+		
+		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
+			var collider = ray_cast.get_collider()
+		
+			if collider == null or collider == target_object:
+				_drop_item()
 			
-		elif collider.has_method("assign_target_position") and collider != target_object:
-			_pick_item(collider)
+			elif collider.has_method("assign_target_position"):
+				_pick_item(collider)
+		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
+			if target_object != null:
+				view_object.emit(target_object)
 
 
 func _pick_item(target: RigidBody3D):

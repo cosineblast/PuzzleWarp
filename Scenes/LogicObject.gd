@@ -6,7 +6,7 @@ var player_target_position: Marker3D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,3 +40,6 @@ func remove_target_position():
 	self.gravity_scale = 1
 	self.can_sleep = true
 	print(self, ": removed target position")
+	
+func get_formula():
+	return { "type": "atomic_logic_object", "id": "purple_disc" }
