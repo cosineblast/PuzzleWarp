@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=9 format=3 uid="uid://22v1quftfdgq"]
 
 [ext_resource type="Script" path="res://Scenes/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player.tscn" id="2_ypc0p"]
 [ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="3_lig0x"]
 [ext_resource type="PackedScene" uid="uid://2xtx0isyutid" path="res://Scenes/LogicObject.tscn" id="3_ngtw4"]
 [ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI.tscn" id="6_1yu2i"]
+[ext_resource type="PackedScene" uid="uid://csey7v1j7gu71" path="res://Scenes/PrismLO.tscn" id="6_wc00g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s33mq"]
 size = Vector3(8.2264, 1, 7.46963)
@@ -86,5 +87,8 @@ size = Vector2i(800, 500)
 render_target_update_mode = 0
 
 [node name="ItemUI" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]
+
+[node name="LogicObject" parent="." instance=ExtResource("6_wc00g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944825, 1.1817)
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]

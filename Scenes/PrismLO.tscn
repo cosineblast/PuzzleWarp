@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://csey7v1j7gu71"]
+
+[ext_resource type="Script" path="res://Scenes/PrismLO.gd" id="1_462l3"]
+[ext_resource type="Texture2D" uid="uid://bjmiy464a7yf6" path="res://Assets/Kenney_Textures/PNG/Red/texture_01.png" id="2_e2p54"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxdja"]
+albedo_texture = ExtResource("2_e2p54")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_x1huk"]
+material = SubResource("StandardMaterial3D_fxdja")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1lun3"]
+points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Thing" type="RigidBody3D"]
+script = ExtResource("1_462l3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_x1huk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_1lun3")
+
+[node name="Node3D" type="Node3D" parent="."]

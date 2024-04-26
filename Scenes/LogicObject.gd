@@ -3,14 +3,6 @@ extends RigidBody3D
 class_name LogicObject
 
 var player_target_position: Marker3D = null
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _integrate_forces(state):
 	if player_target_position == null:
