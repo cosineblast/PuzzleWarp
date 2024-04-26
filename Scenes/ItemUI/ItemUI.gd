@@ -18,11 +18,11 @@ var _current_object = null
 var _buttons = []
 	
 func _set_current_object(target: LogicObject):
+	for button in buttons.get_children():
+			buttons.remove_child(button)
+			
 	if target != null:
 		item_name_label.text = "[center]\n" + target.get_text() + "\n[/center]\n"
-		
-		for button in buttons.get_children():
-			buttons.remove_child(button)
 		
 		for option in target.get_options():
 			var button = Button.new()

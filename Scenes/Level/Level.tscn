@@ -95,15 +95,15 @@ render_target_update_mode = 0
 [node name="SameSpaceLO" parent="." instance=ExtResource("7_2ayxb")]
 transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, 1.63827, 1.41592, -0.604445)
 
-[node name="FirstChild" parent="SameSpaceLO" instance=ExtResource("3_ngtw4")]
+[node name="Disk" parent="SameSpaceLO" instance=ExtResource("3_ngtw4")]
 
-[node name="SecondChild" parent="SameSpaceLO" instance=ExtResource("6_wc00g")]
+[node name="Prism" parent="SameSpaceLO" instance=ExtResource("6_wc00g")]
 
 [node name="SameSpaceLO2" parent="." instance=ExtResource("7_2ayxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
 
-[node name="FirstChild" parent="SameSpaceLO2" instance=ExtResource("3_ngtw4")]
+[node name="Disk" parent="SameSpaceLO2" instance=ExtResource("3_ngtw4")]
 
-[node name="SecondChild" parent="SameSpaceLO2" instance=ExtResource("6_wc00g")]
+[node name="Prism" parent="SameSpaceLO2" instance=ExtResource("6_wc00g")]
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]
