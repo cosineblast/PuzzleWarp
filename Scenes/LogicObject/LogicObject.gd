@@ -35,3 +35,6 @@ func remove_target_position():
 	
 func get_text():
 	return "PurpleDisc"
+	
+func get_options():
+	return []

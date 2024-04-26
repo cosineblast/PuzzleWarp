@@ -18,7 +18,33 @@ func _ready():
 
 func get_text():
 	return first_child.get_text() + " & " + second_child.get_text()
+	
+func get_options():
+	return [{
+		"name": "Pick " + first_child.get_text(),
+		"callback": on_pick_first
+	}, {
+		"name": "Pick " + second_child.get_text(),
+		"callback": on_pick_second
+	}]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func on_pick_first():
+	print("Picking first child")
+	pick_child(first_child)
+	
+	
+func on_pick_second():
+	print("Picking second child")
+	pick_child(second_child)
+	
+func pick_child(child: LogicObject):
+	child.freeze = false
+	child.collision_layer = 1
+	
+	remove_child(child)
+	add_sibling(child)
+	child.transform = transform
+	get_parent().remove_child(self)
+	
+	
+	
