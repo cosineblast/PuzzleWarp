@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://2xtx0isyutid"]
 
-[ext_resource type="Script" path="res://Scenes/LogicObject.gd" id="1_igarl"]
-[ext_resource type="Texture2D" uid="uid://m7bcsnm5esd7" path="res://Assets/Kenney_Textures/PNG/Purple/texture_04.png" id="1_n3kd1"]
+[ext_resource type="Script" path="res://Scenes/LogicObject/LogicObject.gd" id="1_uhyqw"]
+[ext_resource type="Texture2D" uid="uid://m7bcsnm5esd7" path="res://Assets/Kenney_Textures/PNG/Purple/texture_04.png" id="2_x4gil"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksj8"]
-albedo_texture = ExtResource("1_n3kd1")
+albedo_texture = ExtResource("2_x4gil")
 uv1_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wy03e"]
@@ -16,7 +16,7 @@ points = PackedVector3Array(-0.089396, 0.25, 0.477152, -0.0920301, -0.249313, -0
 
 [node name="Node3D" type="RigidBody3D"]
 mass = 0.1
-script = ExtResource("1_igarl")
+script = ExtResource("1_uhyqw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_wy03e")
