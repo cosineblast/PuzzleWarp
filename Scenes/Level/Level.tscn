@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player/Player.tscn" id="2_ypc0p"]
 [ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="3_lig0x"]
-[ext_resource type="PackedScene" uid="uid://2xtx0isyutid" path="res://Scenes/LogicObject/LogicObject.tscn" id="3_ngtw4"]
 [ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI/ItemUI.tscn" id="6_1yu2i"]
 [ext_resource type="PackedScene" uid="uid://csey7v1j7gu71" path="res://Scenes/PrismLO/PrismLO.tscn" id="6_wc00g"]
 [ext_resource type="PackedScene" uid="uid://bqgecqftww8wi" path="res://Scenes/SameSpaceLO/SameSpaceLO.tscn" id="7_2ayxb"]
+[ext_resource type="PackedScene" uid="uid://biik6ptvp56fu" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn" id="8_h4tia"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s33mq"]
 size = Vector3(8.2264, 1, 7.46963)
@@ -42,12 +42,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4eeoe")
-
-[node name="Disk1" parent="." instance=ExtResource("3_ngtw4")]
-transform = Transform3D(1, 0, 0, 0, 0.88037, 0.474288, 0, -0.474288, 0.88037, 0, 2.16317, 0)
-
-[node name="Disk2" parent="." instance=ExtResource("3_ngtw4")]
-transform = Transform3D(0.962004, -0.220574, 0.160922, 0.273036, 0.777161, -0.566985, 0, 0.58938, 0.807856, 0, 0.938037, -1.30426)
 
 [node name="Prism1" parent="." instance=ExtResource("6_wc00g")]
 transform = Transform3D(0.258684, -0.965962, 0, 0.965962, 0.258684, 0, 0, 0, 1, 0, 2.32088, 1.1817)
@@ -95,15 +89,21 @@ render_target_update_mode = 0
 [node name="SameSpaceLO" parent="." instance=ExtResource("7_2ayxb")]
 transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, 1.63827, 1.41592, -0.604445)
 
-[node name="Disk" parent="SameSpaceLO" instance=ExtResource("3_ngtw4")]
-
 [node name="Prism" parent="SameSpaceLO" instance=ExtResource("6_wc00g")]
+
+[node name="Disk" parent="SameSpaceLO" instance=ExtResource("8_h4tia")]
 
 [node name="SameSpaceLO2" parent="." instance=ExtResource("7_2ayxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
 
-[node name="Disk" parent="SameSpaceLO2" instance=ExtResource("3_ngtw4")]
+[node name="Disk" parent="SameSpaceLO2" instance=ExtResource("8_h4tia")]
 
 [node name="Prism" parent="SameSpaceLO2" instance=ExtResource("6_wc00g")]
+
+[node name="Disk" parent="." instance=ExtResource("8_h4tia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06096, 1.96754, 0)
+
+[node name="Disk2" parent="." instance=ExtResource("8_h4tia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13185, 1.92108, 0)
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]
