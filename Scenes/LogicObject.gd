@@ -41,5 +41,5 @@ func remove_target_position():
 	self.can_sleep = true
 	print(self, ": removed target position")
 	
-func get_formula():
-	return { "type": "atomic_logic_object", "id": "purple_disc" }
+func get_text():
+	return "PurpleDisc"

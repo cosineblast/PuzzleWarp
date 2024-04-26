@@ -85,4 +85,6 @@ handle_input_locally = false
 size = Vector2i(800, 500)
 render_target_update_mode = 0
 
-[node name="Control" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]
+[node name="ItemUI" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]
+
+[connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]

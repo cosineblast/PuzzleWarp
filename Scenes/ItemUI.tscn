@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi2q5nojexq34"]
+[gd_scene load_steps=3 format=3 uid="uid://bi2q5nojexq34"]
 
+[ext_resource type="Script" path="res://Scenes/ItemUI.gd" id="1_aji18"]
 [ext_resource type="Theme" uid="uid://dth5urcps4biw" path="res://Resources/GameUI.tres" id="1_bjx86"]
 
 [node name="Control" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aji18")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -24,7 +26,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme = ExtResource("1_bjx86")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]
 ExampleObject
@@ -47,6 +49,8 @@ layout_mode = 2
 text = "Yeet
 "
 
-[node name="Button2" type="Button" parent="VBoxContainer/PanelContainer2/VBoxContainer"]
+[node name="LeaveButton" type="Button" parent="VBoxContainer/PanelContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Leave"
+
+[connection signal="pressed" from="VBoxContainer/PanelContainer2/VBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]

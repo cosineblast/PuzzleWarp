@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _unhandled_input(event):
+func handle_input(event):
 	if event is InputEventMouseMotion:
 		_handleMouseMotion(event)
 	
