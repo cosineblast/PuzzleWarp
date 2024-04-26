@@ -43,14 +43,14 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4eeoe")
 
-[node name="Object1" parent="." instance=ExtResource("3_ngtw4")]
+[node name="Disk1" parent="." instance=ExtResource("3_ngtw4")]
 transform = Transform3D(1, 0, 0, 0, 0.88037, 0.474288, 0, -0.474288, 0.88037, 0, 2.16317, 0)
 
-[node name="Object2" parent="." instance=ExtResource("3_ngtw4")]
+[node name="Disk2" parent="." instance=ExtResource("3_ngtw4")]
 transform = Transform3D(0.962004, -0.220574, 0.160922, 0.273036, 0.777161, -0.566985, 0, 0.58938, 0.807856, 0, 0.938037, -1.30426)
 
-[node name="LogicObject" parent="." instance=ExtResource("6_wc00g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944825, 1.1817)
+[node name="Prism1" parent="." instance=ExtResource("6_wc00g")]
+transform = Transform3D(0.258684, -0.965962, 0, 0.965962, 0.258684, 0, 0, 0, 1, 0, 2.32088, 1.1817)
 
 [node name="CrosshairContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 8
@@ -93,10 +93,17 @@ render_target_update_mode = 0
 [node name="ItemUI" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]
 
 [node name="SameSpaceLO" parent="." instance=ExtResource("7_2ayxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63827, 1.05561, 0)
+transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, 1.63827, 1.41592, -0.604445)
 
 [node name="FirstChild" parent="SameSpaceLO" instance=ExtResource("3_ngtw4")]
 
 [node name="SecondChild" parent="SameSpaceLO" instance=ExtResource("6_wc00g")]
+
+[node name="SameSpaceLO2" parent="." instance=ExtResource("7_2ayxb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
+
+[node name="FirstChild" parent="SameSpaceLO2" instance=ExtResource("3_ngtw4")]
+
+[node name="SecondChild" parent="SameSpaceLO2" instance=ExtResource("6_wc00g")]
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]

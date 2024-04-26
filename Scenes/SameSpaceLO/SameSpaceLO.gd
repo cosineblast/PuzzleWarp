@@ -6,6 +6,8 @@ var first_child: LogicObject = $FirstChild
 @onready
 var second_child: LogicObject = $SecondChild
 
+var dead = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	first_child.collision_layer = 0
@@ -29,11 +31,19 @@ func get_options():
 	}]
 
 func on_pick_first():
+	if dead:
+		print("warning: dead pick 1")
+		return
+		
 	print("Picking first child")
 	pick_child(first_child)
 	
 	
 func on_pick_second():
+	if dead:
+		print("warning: dead pick 2")
+		return
+		
 	print("Picking second child")
 	pick_child(second_child)
 	
@@ -45,6 +55,7 @@ func pick_child(child: LogicObject):
 	add_sibling(child)
 	child.transform = transform
 	get_parent().remove_child(self)
+	dead = true
 	
 	
 	
