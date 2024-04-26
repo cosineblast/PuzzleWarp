@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqgecqftww8wi"]
+
+[ext_resource type="Script" path="res://Scenes/SameSpaceLO/SameSpaceLO.gd" id="1_ui8ky"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cl2fs"]
+
+[node name="SameSpaceLO" type="RigidBody3D"]
+script = ExtResource("1_ui8ky")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cl2fs")
