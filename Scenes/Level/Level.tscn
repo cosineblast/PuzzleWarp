@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bqgecqftww8wi" path="res://Scenes/SameSpaceLO/SameSpaceLO.tscn" id="7_2ayxb"]
 [ext_resource type="PackedScene" uid="uid://biik6ptvp56fu" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn" id="8_h4tia"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s33mq"]
-size = Vector3(8.2264, 1, 7.46963)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5tw72"]
 
 [sub_resource type="Environment" id="Environment_4eeoe"]
 background_mode = 1
@@ -23,17 +22,12 @@ script = ExtResource("1_kvcel")
 [node name="Player" parent="." instance=ExtResource("2_ypc0p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1.80377, -1)
 
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295779, -0.5, -0.5)
-shape = SubResource("BoxShape3D_s33mq")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.32001, 0.42494)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("3_lig0x")
+physics_material = SubResource("PhysicsMaterial_5tw72")
 cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(-1, 0, 786433, -65536, 0, 786433, -65536, 65535, 786433, -65536, 65534, 786432, -65535, 65534, 786433, -65535, 65535, 786433, -65535, 0, 786433, -65536, 1, 786433, -65535, 1, 786433, -1, 1, 786433, -1, 65535, 786433, -1, 65534, 786432, -2, 65535, 786433, -2, 0, 786433, -3, 0, 786433, -3, 65535, 786433, -3, 65533, 786433, -65536, 65533, 786433, -65535, 65533, 786433, -4, 0, 786433, -4, 65535, 786433, -4, 65534, 786434, -4, 65533, 786433, -65534, 1, 786433, -65534, 65535, 786433, -65534, 65534, 786433, -65534, 65533, 786433, -65534, 0, 786433, -2, 1, 786433, -3, 1, 786433, -4, 1, 786433, -2, 65534, 786433, -3, 65534, 786433, -2, 65533, 786433, -1, 65533, 786433)
