@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://4jk5gup8hlit"]
+[gd_scene load_steps=16 format=3 uid="uid://4jk5gup8hlit"]
 
 [ext_resource type="Texture2D" uid="uid://crdha8wih2bws" path="res://Assets/Kenney_Textures/PNG/Orange/texture_02.png" id="1_o4m5q"]
 [ext_resource type="Texture2D" uid="uid://cklx01yn0b4iy" path="res://Assets/Kenney_Textures/PNG/Orange/texture_01.png" id="1_u3ct7"]
 [ext_resource type="Texture2D" uid="uid://dhbv04npuiyn4" path="res://Assets/Kenney_Textures/PNG/Orange/texture_03.png" id="3_70aqp"]
+[ext_resource type="Texture2D" uid="uid://wh6egobeavme" path="res://Assets/Kenney_Textures/Vector/texture_01.svg" id="4_24lhh"]
+[ext_resource type="Texture2D" uid="uid://cj3hgbkb81q4n" path="res://Assets/Kenney_Textures/PNG/Purple/texture_01.png" id="5_cls2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc0px"]
 albedo_texture = ExtResource("1_u3ct7")
@@ -13,6 +15,7 @@ material = SubResource("StandardMaterial3D_uc0px")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3c88"]
 albedo_texture = ExtResource("1_o4m5q")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_yokqg"]
 material = SubResource("StandardMaterial3D_t3c88")
@@ -23,6 +26,20 @@ uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_pldqh"]
 material = SubResource("StandardMaterial3D_2dhcj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkf0t"]
+albedo_texture = ExtResource("4_24lhh")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_0m8tq"]
+material = SubResource("StandardMaterial3D_vkf0t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e0dx"]
+albedo_texture = ExtResource("5_cls2g")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_f0y61"]
+material = SubResource("StandardMaterial3D_0e0dx")
 
 [node name="Node3D" type="Node3D"]
 
@@ -36,3 +53,11 @@ mesh = SubResource("BoxMesh_yokqg")
 [node name="BasicOrange3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 mesh = SubResource("BoxMesh_pldqh")
+
+[node name="BasicBlack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.42382)
+mesh = SubResource("BoxMesh_0m8tq")
+
+[node name="BasicPurple" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.24923)
+mesh = SubResource("BoxMesh_f0y61")

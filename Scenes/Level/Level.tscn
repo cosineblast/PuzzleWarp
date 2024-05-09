@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=9 format=3 uid="uid://22v1quftfdgq"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player/Player.tscn" id="2_ypc0p"]
-[ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="3_lig0x"]
 [ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI/ItemUI.tscn" id="6_1yu2i"]
 [ext_resource type="PackedScene" uid="uid://csey7v1j7gu71" path="res://Scenes/PrismLO/PrismLO.tscn" id="6_wc00g"]
 [ext_resource type="PackedScene" uid="uid://bqgecqftww8wi" path="res://Scenes/SameSpaceLO/SameSpaceLO.tscn" id="7_2ayxb"]
+[ext_resource type="PackedScene" uid="uid://cog1sd4ug5dqm" path="res://Scenes/LogicLevel/LogicLevel.tscn" id="7_boy3w"]
 [ext_resource type="PackedScene" uid="uid://biik6ptvp56fu" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn" id="8_h4tia"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5tw72"]
 
 [sub_resource type="Environment" id="Environment_4eeoe"]
 background_mode = 1
@@ -20,25 +18,13 @@ ambient_light_color = Color(0.627451, 0.8, 0.984314, 1)
 script = ExtResource("1_kvcel")
 
 [node name="Player" parent="." instance=ExtResource("2_ypc0p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 1.80377, -1)
+transform = Transform3D(0.999953, 0, 0.00973877, 0, 1, 0, -0.00973877, 0, 0.999953, -2.29133, 2.18647, 0.947906)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.32001, 0.42494)
 
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("3_lig0x")
-physics_material = SubResource("PhysicsMaterial_5tw72")
-cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(-1, 0, 786433, -65536, 0, 786433, -65536, 65535, 786433, -65536, 65534, 786432, -65535, 65534, 786433, -65535, 65535, 786433, -65535, 0, 786433, -65536, 1, 786433, -65535, 1, 786433, -1, 1, 786433, -1, 65535, 786433, -1, 65534, 786432, -2, 65535, 786433, -2, 0, 786433, -3, 0, 786433, -3, 65535, 786433, -3, 65533, 786433, -65536, 65533, 786433, -65535, 65533, 786433, -4, 0, 786433, -4, 65535, 786433, -4, 65534, 786434, -4, 65533, 786433, -65534, 1, 786433, -65534, 65535, 786433, -65534, 65534, 786433, -65534, 65533, 786433, -65534, 0, 786433, -2, 1, 786433, -3, 1, 786433, -4, 1, 786433, -2, 65534, 786433, -3, 65534, 786433, -2, 65533, 786433, -1, 65533, 786433)
-}
-metadata/_editor_floor_ = Vector3(0, -1, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4eeoe")
-
-[node name="Prism1" parent="." instance=ExtResource("6_wc00g")]
-transform = Transform3D(0.258684, -0.965962, 0, 0.965962, 0.258684, 0, 0, 0, 1, 0, 2.32088, 1.1817)
 
 [node name="CrosshairContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 8
@@ -80,24 +66,30 @@ render_target_update_mode = 0
 
 [node name="ItemUI" parent="ObjectGUIContainer/ObjectGUI" instance=ExtResource("6_1yu2i")]
 
-[node name="SameSpaceLO" parent="." instance=ExtResource("7_2ayxb")]
-transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, 1.63827, 1.41592, -0.604445)
+[node name="LogicLevel" parent="." instance=ExtResource("7_boy3w")]
 
-[node name="Prism" parent="SameSpaceLO" instance=ExtResource("6_wc00g")]
+[node name="Inputs" type="Node3D" parent="LogicLevel"]
 
-[node name="Disk" parent="SameSpaceLO" instance=ExtResource("8_h4tia")]
+[node name="SameSpaceLO" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
+transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, -0.04373, 1.41592, -0.604445)
 
-[node name="SameSpaceLO2" parent="." instance=ExtResource("7_2ayxb")]
+[node name="Prism" parent="LogicLevel/Inputs/SameSpaceLO" instance=ExtResource("6_wc00g")]
+
+[node name="Disk" parent="LogicLevel/Inputs/SameSpaceLO" instance=ExtResource("8_h4tia")]
+
+[node name="SameSpaceLO2" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
 
-[node name="Disk" parent="SameSpaceLO2" instance=ExtResource("8_h4tia")]
+[node name="Disk" parent="LogicLevel/Inputs/SameSpaceLO2" instance=ExtResource("8_h4tia")]
 
-[node name="Prism" parent="SameSpaceLO2" instance=ExtResource("6_wc00g")]
+[node name="Prism" parent="LogicLevel/Inputs/SameSpaceLO2" instance=ExtResource("6_wc00g")]
 
-[node name="Disk" parent="." instance=ExtResource("8_h4tia")]
+[node name="Outputs" type="Node3D" parent="LogicLevel"]
+
+[node name="Disk" parent="LogicLevel/Outputs" instance=ExtResource("8_h4tia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06096, 1.96754, 0)
 
-[node name="Disk2" parent="." instance=ExtResource("8_h4tia")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13185, 1.92108, 0)
+[node name="Disk2" parent="LogicLevel/Outputs" instance=ExtResource("8_h4tia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46468, 1.92108, 0)
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]
