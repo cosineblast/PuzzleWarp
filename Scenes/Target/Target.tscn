@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpgosunhxktt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rffdr"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ok7eg"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Target" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = SubResource("ViewportTexture_rffdr")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.59828, 0)
+remote_path = NodePath("../SubViewport/Node3D")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+canvas_cull_mask = 4294966272
+size = Vector2i(500, 500)
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.59828, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D"]
+transform = Transform3D(0.772235, 0, 0.635337, 0.388561, 0.791181, -0.472285, -0.502667, 0.611582, 0.610977, 0, 0, -1.24007)
+layers = 8
+mesh = SubResource("BoxMesh_ok7eg")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+cull_mask = 1047560

@@ -2,6 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://dsx4iyrb0cfvl" path="res://Resources/Testing.tres" id="1_gj1oh"]
 [ext_resource type="Script" path="res://Scenes/LogicLevel/LogicLevel.gd" id="1_jk21b"]
+[ext_resource type="PackedScene" uid="uid://ctpgosunhxktt" path="res://Scenes/Target/Target.tscn" id="3_7hf4l"]
 
 [node name="LogicLevel" type="Node3D"]
 script = ExtResource("1_jk21b")
@@ -28,3 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275, 1, 2)
 
 [node name="Input5" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.475, 1, 2)
+
+[node name="Target" parent="." instance=ExtResource("3_7hf4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279918, 1.00527, -3.98537)
