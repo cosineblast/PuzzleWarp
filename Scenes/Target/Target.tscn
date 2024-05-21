@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctpgosunhxktt"]
+[gd_scene load_steps=4 format=3 uid="uid://ctpgosunhxktt"]
+
+[ext_resource type="Script" path="res://Scenes/Target/Target.gd" id="1_4gpv1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rffdr"]
 viewport_path = NodePath("SubViewport")
@@ -7,6 +9,7 @@ viewport_path = NodePath("SubViewport")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Target" type="Node3D"]
+script = ExtResource("1_4gpv1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

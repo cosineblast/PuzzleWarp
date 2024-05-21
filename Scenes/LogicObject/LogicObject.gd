@@ -33,8 +33,8 @@ func remove_target_position():
 	self.can_sleep = true
 	print(self, ": removed target position")
 
-func get_text():
-	return "Unknowk"
+func get_spec():
+	return null
 
 func get_options():
 	return []

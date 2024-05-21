@@ -1,5 +1,7 @@
 extends LogicObject
 
+static var LogicSpec = preload("res://Src/LogicSpec.gd")
+
 var first_child: LogicObject = null
 
 var second_child: LogicObject = null
@@ -27,15 +29,15 @@ func _ready():
 	pass # Replace with function body.
 
 
-func get_text():
-	return first_child.get_text() + " & " + second_child.get_text()
+func get_spec():
+	return LogicSpec.get_same_space(first_child.get_spec(), second_child.get_spec())
 
 func get_options():
 	return [{
-		"name": "Pick " + first_child.get_text(),
+		"name": "Pick " + LogicSpec.get_text_of(first_child.get_spec()),
 		"callback": on_pick_first
 	}, {
-		"name": "Pick " + second_child.get_text(),
+		"name": "Pick " + LogicSpec.get_text_of(second_child.get_spec()),
 		"callback": on_pick_second
 	}]
 
