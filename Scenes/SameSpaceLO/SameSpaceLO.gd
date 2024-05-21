@@ -2,6 +2,28 @@ extends LogicObject
 
 static var LogicSpec = preload("res://Src/LogicSpec.gd")
 
+var _first_spec_string: String
+var _first_spec
+
+@export
+var first_spec_string: String:
+	get: return _first_spec_string
+	set(value):
+		_first_spec_string = value
+		_first_spec = LogicSpec.parse(value)
+		assert(_first_spec != null)
+
+var _second_spec_string: String
+var _second_spec
+
+@export
+var second_spec_string: String:
+	get: return _second_spec_string
+	set(value):
+		_second_spec_string = value
+		_second_spec = LogicSpec.parse(value)
+		assert(_second_spec != null)
+
 var first_child: LogicObject = null
 
 var second_child: LogicObject = null
@@ -10,6 +32,12 @@ var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	assert(_first_spec != null)
+	assert(_second_spec != null)
+
+	add_child(LogicSpec.spawn_object(_first_spec))
+	add_child(LogicSpec.spawn_object(_second_spec))
+
 	var logic_children = []
 
 	for child in get_children():
@@ -30,7 +58,7 @@ func _ready():
 
 
 func get_spec():
-	return LogicSpec.get_same_space(first_child.get_spec(), second_child.get_spec())
+	return LogicSpec.get_same_space(_first_spec, _second_spec)
 
 func get_options():
 	return [{

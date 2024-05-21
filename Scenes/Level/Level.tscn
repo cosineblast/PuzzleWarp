@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=8 format=3 uid="uid://22v1quftfdgq"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player/Player.tscn" id="2_ypc0p"]
 [ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI/ItemUI.tscn" id="6_1yu2i"]
-[ext_resource type="PackedScene" uid="uid://csey7v1j7gu71" path="res://Scenes/PrismLO/PrismLO.tscn" id="6_wc00g"]
 [ext_resource type="PackedScene" uid="uid://bqgecqftww8wi" path="res://Scenes/SameSpaceLO/SameSpaceLO.tscn" id="7_2ayxb"]
 [ext_resource type="PackedScene" uid="uid://cog1sd4ug5dqm" path="res://Scenes/LogicLevel/LogicLevel.tscn" id="7_boy3w"]
 [ext_resource type="PackedScene" uid="uid://biik6ptvp56fu" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn" id="8_h4tia"]
@@ -70,19 +69,15 @@ render_target_update_mode = 0
 
 [node name="Inputs" type="Node3D" parent="LogicLevel"]
 
-[node name="SameSpaceLO" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
+[node name="SameSpace1" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
 transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 0.973738, 0.199424, 0.109838, -0.04373, 1.41592, -0.604445)
+first_spec_string = "RedPrism"
+second_spec_string = "PurpleDisk"
 
-[node name="Prism" parent="LogicLevel/Inputs/SameSpaceLO" instance=ExtResource("6_wc00g")]
-
-[node name="Disk" parent="LogicLevel/Inputs/SameSpaceLO" instance=ExtResource("8_h4tia")]
-
-[node name="SameSpaceLO2" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
+[node name="SameSpace2" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
-
-[node name="Disk" parent="LogicLevel/Inputs/SameSpaceLO2" instance=ExtResource("8_h4tia")]
-
-[node name="Prism" parent="LogicLevel/Inputs/SameSpaceLO2" instance=ExtResource("6_wc00g")]
+first_spec_string = "PurpleDisk"
+second_spec_string = "RedPrism"
 
 [node name="Outputs" type="Node3D" parent="LogicLevel"]
 

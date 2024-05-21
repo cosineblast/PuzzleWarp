@@ -1,8 +1,8 @@
 
 # data LogicSpec = Disk | Prism | SameSpace LogicSpec LogicSpec
 
-static var PrismLO = preload("res://Scenes/PrismLO/PrismLO.gd")
-static var PurpleDiskLO  = preload("res://Scenes/PurpleDiskLO/PurpleDiskLO.gd")
+static var PrismLO = preload("res://Scenes/PrismLO/PrismLO.tscn")
+static var PurpleDiskLO  = preload("res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn")
 
 static func get_red_prism():
 	return {
@@ -37,10 +37,10 @@ static func get_text_of(spec):
 		{"type": "same_space", "left": var left, "right": var right}:
 			return get_text_of(left) + " & " + get_text_of(right)
 
-static func to_logic_object(spec):
+static func spawn_object(spec):
 	match spec:
-		{"type": "primitive", "id": "red_prism"}: return PrismLO.new()
-		{"type": "primitive", "id": "disk"}: return PurpleDiskLO.new()
+		{"type": "primitive", "id": "red_prism"}: return PrismLO.instantiate()
+		{"type": "primitive", "id": "disk"}: return PurpleDiskLO.instantiate()
 		{"type": "same_space", "left": var left, "right": var right}:
 			# TODO
 			return null
