@@ -32,3 +32,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.475, 1, 2)
 
 [node name="Target" parent="." instance=ExtResource("3_7hf4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.279918, 1.00527, -3.98537)
+spec = "PurpleDisk"
+
+[node name="Target2" parent="." instance=ExtResource("3_7hf4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33077, 1.04874, -3.95342)
+spec = "RedPrism"
