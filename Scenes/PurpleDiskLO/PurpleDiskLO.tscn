@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://biik6ptvp56fu"]
 
 [ext_resource type="Script" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.gd" id="1_p6y0a"]
-[ext_resource type="Texture2D" uid="uid://m7bcsnm5esd7" path="res://Assets/Kenney_Textures/PNG/Purple/texture_04.png" id="2_n1y3y"]
+[ext_resource type="Texture2D" uid="uid://cs6ifadwxn5rp" path="res://Assets/Kenney_Textures/PNG/Purple/texture_04.png" id="2_n1y3y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksj8"]
 albedo_texture = ExtResource("2_n1y3y")

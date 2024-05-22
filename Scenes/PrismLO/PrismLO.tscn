@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://csey7v1j7gu71"]
 
 [ext_resource type="Script" path="res://Scenes/PrismLO/PrismLO.gd" id="1_kw7cr"]
-[ext_resource type="Texture2D" uid="uid://bjmiy464a7yf6" path="res://Assets/Kenney_Textures/PNG/Red/texture_01.png" id="2_ys4lm"]
+[ext_resource type="Texture2D" uid="uid://bmpun57limuxs" path="res://Assets/Kenney_Textures/PNG/Red/texture_01.png" id="2_ys4lm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxdja"]
 albedo_texture = ExtResource("2_ys4lm")

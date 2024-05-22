@@ -13,11 +13,6 @@ Asset = namedtuple('Asset', 'name url')
 
 ASSETS = [
         Asset(
-            name='Kenney_ConveyorKit',
-            url='https://kenney.nl/media/pages/assets/conveyor-kit/3e951d8bb9-1704624250/kenney_conveyor-kit.zip'
-        ),
-
-        Asset(
             name='Kenney_Textures',
             url='https://kenney.nl/media/pages/assets/prototype-textures/c936d9058b-1677578307/kenney_prototype-textures.zip',
         )
