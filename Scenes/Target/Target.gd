@@ -11,6 +11,7 @@ var spec: String:
 		set_spec(LogicSpec.parse(value))
 
 
+var _mesh_instance: MeshInstance3D
 
 func set_spec(value):
 	assert(value != null)
@@ -22,8 +23,12 @@ func set_spec(value):
 
 	var node = $SubViewport/Node3D
 	var mesh_position = $SubViewport/Node3D/Sample3DMesh
-	
+
 	mesh_instance.get_parent().remove_child(mesh_instance)
+
+	if _mesh_instance != null:
+		node.remove_child(_mesh_instance)
+
 	node.add_child(mesh_instance)
 	mesh_instance.transform = mesh_position.transform
 
@@ -31,4 +36,12 @@ func set_spec(value):
 	mesh_instance.layers = 0
 	mesh_instance.set_layer_mask_value(4, true)
 
+	_mesh_instance = mesh_instance
+
+
+func _process(delta):
+	if _mesh_instance == null:
+		return
+
+	_mesh_instance.rotate_y(delta)
 

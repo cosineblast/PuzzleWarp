@@ -27,7 +27,7 @@ size = Vector2i(500, 500)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.59828, 0)
 
 [node name="Sample3DMesh" type="MeshInstance3D" parent="SubViewport/Node3D"]
-transform = Transform3D(0.772235, 0, 0.635337, 0.388561, 0.791181, -0.472285, -0.502667, 0.611582, 0.610977, 0, 0, -1.24007)
+transform = Transform3D(0.999841, 0.00979541, 0.0149058, -0.0130523, 0.971382, 0.237165, -0.0121561, -0.237322, 0.971355, 0, 0.0178981, -1.11952)
 layers = 16
 mesh = SubResource("BoxMesh_ok7eg")
 
