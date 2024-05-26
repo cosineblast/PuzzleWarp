@@ -47,5 +47,3 @@ layout_mode = 2
 [node name="LeaveButton" type="Button" parent="VBoxContainer/PanelContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Leave"
-
-[connection signal="pressed" from="VBoxContainer/PanelContainer2/VBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]

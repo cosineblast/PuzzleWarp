@@ -54,5 +54,5 @@ func _exit():
 	current_object = null
 	exit.emit()
 
-func _on_leave_button_pressed():
-	_exit()
+func _ready():
+	leave_button.pressed.connect(_exit)
