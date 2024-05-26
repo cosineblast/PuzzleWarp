@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://22v1quftfdgq"]
+[gd_scene load_steps=8 format=3 uid="uid://22v1quftfdgq"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_kvcel"]
 [ext_resource type="PackedScene" uid="uid://c8fjrpkp775bx" path="res://Scenes/Player/Player.tscn" id="2_ypc0p"]
 [ext_resource type="PackedScene" uid="uid://bi2q5nojexq34" path="res://Scenes/ItemUI/ItemUI.tscn" id="6_1yu2i"]
+[ext_resource type="PackedScene" uid="uid://biik6ptvp56fu" path="res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn" id="6_40vms"]
 [ext_resource type="PackedScene" uid="uid://bqgecqftww8wi" path="res://Scenes/SameSpaceLO/SameSpaceLO.tscn" id="7_2ayxb"]
 [ext_resource type="PackedScene" uid="uid://cog1sd4ug5dqm" path="res://Scenes/LogicLevel/LogicLevel.tscn" id="7_boy3w"]
 
@@ -78,5 +79,8 @@ second_spec_string = "PurpleDisk"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
 first_spec_string = "PurpleDisk"
 second_spec_string = "RedPrism"
+
+[node name="PurpleDiskLO" parent="LogicLevel/Inputs" instance=ExtResource("6_40vms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42159, 0.513864, 0)
 
 [connection signal="exit" from="ObjectGUIContainer/ObjectGUI/ItemUI" to="." method="_on_item_ui_exit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctpgosunhxktt"]
+[gd_scene load_steps=5 format=3 uid="uid://ctpgosunhxktt"]
 
 [ext_resource type="Script" path="res://Scenes/Target/Target.gd" id="1_4gpv1"]
 
@@ -7,6 +7,9 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ok7eg"]
 size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgbqn"]
+size = Vector3(1, 1, 0.4)
 
 [node name="Target" type="Node3D"]
 script = ExtResource("1_4gpv1")
@@ -36,3 +39,10 @@ cull_mask = 1047560
 
 [node name="MeshPosition" type="Marker3D" parent="SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.33012)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.20221)
+shape = SubResource("BoxShape3D_xgbqn")

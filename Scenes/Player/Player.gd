@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+const LogicObject = preload("res://Scenes/LogicObject/LogicObject.gd")
+const ObjectTarget = preload("res://Scenes/Target/Target.gd")
+
 const SPEED = 7
 const JUMP_VELOCITY = 8
 
@@ -18,10 +21,12 @@ var ignore_input = false
 
 var target_object: RigidBody3D = null
 
-signal view_object(target)
+signal view_object(object)
+
+signal view_target(target)
 
 func _ready():
-	pass
+	assert(Target != null)
 
 func _physics_process(delta):
 
@@ -60,23 +65,26 @@ func _handleMouseMotion(event: InputEventMouseMotion):
 	camera_pivot.rotate(Vector3(1, 0, 0), -change.y)
 	rotate(Vector3(0, 1, 0), -change.x)
 
-
-
-
 func _handleMouseClick(event: InputEventMouseButton):
 	if ignore_input:
 		return
 
 	if event.pressed:
-
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			var collider = ray_cast.get_collider()
 
 			if collider == null or collider == target_object:
 				_drop_item()
 
-			elif collider.has_method("assign_target_position"):
+			elif collider is LogicObject:
 				_pick_item(collider)
+
+			elif collider is Area3D:
+				var its_parent = collider.get_parent()
+
+				if its_parent is ObjectTarget:
+					view_target.emit(its_parent)
+
 		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
 			if target_object != null:
 				view_object.emit(target_object)
@@ -90,7 +98,7 @@ func _pick_item(target: RigidBody3D):
 
 func _drop_item():
 	if target_object != null:
-		print("Dropping object", target_object)
+		print("Dropping object ", target_object)
 		target_object.remove_target_position()
 		target_object = null
 

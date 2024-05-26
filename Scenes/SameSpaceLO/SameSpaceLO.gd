@@ -1,3 +1,9 @@
+# TODO: improve this
+# Right now, this LO spawns two logic objects,
+# removes their collisions, then adds them as children.
+# it makes a lot more sense to spawn the objects, take their 3D meshes,
+# and put those as children instead.
+
 extends LogicObject
 
 static var LogicSpec = preload("res://Src/LogicSpec.gd")
@@ -25,8 +31,10 @@ var second_spec_string: String:
 		assert(_second_spec != null)
 
 var first_child: LogicObject = null
+var _first_child_original_collision_layer
 
 var second_child: LogicObject = null
+var _second_child_original_collision_layer
 
 var dead = false
 
@@ -49,8 +57,12 @@ func _ready():
 	first_child = logic_children[0]
 	second_child = logic_children[1]
 
+	_first_child_original_collision_layer = first_child.collision_layer
 	first_child.collision_layer = 0
+
+	_second_child_original_collision_layer = second_child.collision_layer
 	second_child.collision_layer = 0
+
 	first_child.freeze = true
 	second_child.freeze = true
 
@@ -76,6 +88,7 @@ func on_pick_first():
 
 	print("Picking first child")
 	pick_child(first_child)
+	first_child.collision_layer = _first_child_original_collision_layer
 
 
 func on_pick_second():
@@ -85,10 +98,10 @@ func on_pick_second():
 
 	print("Picking second child")
 	pick_child(second_child)
+	second_child.collision_layer = _second_child_original_collision_layer
 
 func pick_child(child: LogicObject):
 	child.freeze = false
-	child.collision_layer = 1
 
 	remove_child(child)
 	add_sibling(child)

@@ -5,6 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_cl2fs"]
 
 [node name="SameSpaceLO" type="RigidBody3D"]
+collision_layer = 3
 script = ExtResource("1_ui8ky")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
