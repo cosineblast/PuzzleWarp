@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const LogicObject = preload("res://Scenes/LogicObject/LogicObject.gd")
-const ObjectTarget = preload("res://Scenes/Target/Target.gd")
+const LevelTarget = preload("res://Scenes/LevelTarget/LevelTarget.gd")
 
 const SPEED = 7
 const JUMP_VELOCITY = 8
@@ -25,8 +25,6 @@ signal view_object(object)
 
 signal view_target(target)
 
-func _ready():
-	assert(Target != null)
 
 func _physics_process(delta):
 
@@ -82,7 +80,7 @@ func _handleMouseClick(event: InputEventMouseButton):
 			elif collider is Area3D:
 				var its_parent = collider.get_parent()
 
-				if its_parent is ObjectTarget:
+				if its_parent is LevelTarget:
 					view_target.emit(its_parent)
 
 		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:

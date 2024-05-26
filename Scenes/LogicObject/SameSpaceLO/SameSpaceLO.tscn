@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqgecqftww8wi"]
 
-[ext_resource type="Script" path="res://Scenes/SameSpaceLO/SameSpaceLO.gd" id="1_ui8ky"]
+[ext_resource type="Script" path="res://Scenes/LogicObject/SameSpaceLO/SameSpaceLO.gd" id="1_doeqk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cl2fs"]
 
 [node name="SameSpaceLO" type="RigidBody3D"]
 collision_layer = 3
-script = ExtResource("1_ui8ky")
+script = ExtResource("1_doeqk")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_cl2fs")

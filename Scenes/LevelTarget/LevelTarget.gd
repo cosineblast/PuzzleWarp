@@ -1,6 +1,6 @@
 extends Node3D
 
-class_name Target
+class_name LevelTarget
 
 const LogicSpec = preload("res://Src/LogicSpec.gd")
 
