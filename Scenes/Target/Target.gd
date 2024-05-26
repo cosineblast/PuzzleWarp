@@ -6,14 +6,20 @@ static var LogicSpec = preload("res://Src/LogicSpec.gd")
 var _spec
 
 @export
-var spec: String:
+var spec_string: String:
 	set(value):
-		set_spec(LogicSpec.parse(value))
+		_set_spec(LogicSpec.parse(value))
 
+	get: return LogicSpec.get_text_of(_spec)
+
+var spec:
+	set(value): _set_spec(value)
+	get: return _spec
 
 var _mesh_instance: MeshInstance3D
 
-func set_spec(value):
+func _set_spec(value):
+	# TODO: allow setting the spec to null
 	assert(value != null)
 
 	_spec = value

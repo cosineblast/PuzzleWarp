@@ -35,7 +35,6 @@ func _ready():
 		child.position = input_markers[i].position
 		i += 1
 
-	assert(_output_specs.size() == 1)
-	$Target.set_spec(_output_specs[0])
+	# TODO: Add logic specs to targets
 
 

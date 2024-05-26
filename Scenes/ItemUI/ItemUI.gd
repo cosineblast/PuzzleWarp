@@ -17,8 +17,6 @@ var current_object = null : set = _set_current_object, get = _get_current_object
 
 var _current_object = null
 
-var _buttons = []
-
 func _set_current_object(target: LogicObject):
 	for button in buttons.get_children():
 			buttons.remove_child(button)
