@@ -1,6 +1,6 @@
 extends Node3D
 
-static var LogicSpec = preload("res://Src/LogicSpec.gd")
+const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 var inputs: Array = []
 

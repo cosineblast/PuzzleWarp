@@ -2,7 +2,7 @@ extends Node3D
 
 class_name Target
 
-static var LogicSpec = preload("res://Src/LogicSpec.gd")
+const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 var _spec
 

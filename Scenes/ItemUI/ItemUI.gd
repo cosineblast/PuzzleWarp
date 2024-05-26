@@ -1,6 +1,6 @@
 extends Control
 
-static var LogicSpec = preload("res://Src/LogicSpec.gd")
+const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 signal exit()
 

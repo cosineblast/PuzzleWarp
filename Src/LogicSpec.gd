@@ -1,8 +1,8 @@
 
 # data LogicSpec = Disk | Prism | SameSpace LogicSpec LogicSpec
 
-static var PrismLO = preload("res://Scenes/PrismLO/PrismLO.tscn")
-static var PurpleDiskLO  = preload("res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn")
+const PrismLO = preload("res://Scenes/PrismLO/PrismLO.tscn")
+const PurpleDiskLO  = preload("res://Scenes/PurpleDiskLO/PurpleDiskLO.tscn")
 
 static func get_red_prism():
 	return {

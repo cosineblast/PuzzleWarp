@@ -6,7 +6,7 @@
 
 extends LogicObject
 
-static var LogicSpec = preload("res://Src/LogicSpec.gd")
+const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 var _first_spec_string: String
 var _first_spec
