@@ -17,6 +17,8 @@ var current_object = null : set = _set_current_object, get = _get_current_object
 
 var _current_object = null
 
+var ignore_input: bool = true
+
 func _set_current_object(target: LogicObject):
 	for button in buttons.get_children():
 			buttons.remove_child(button)
@@ -45,7 +47,10 @@ func _set_current_object(target: LogicObject):
 func _get_current_object():
 	return _current_object
 
-func handle_input(event):
+func _unhandled_input(event):
+	if ignore_input:
+		return
+
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			_exit()

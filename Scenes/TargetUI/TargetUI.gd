@@ -16,6 +16,8 @@ var current_spec:
 
 var _current_spec
 
+var ignore_input = true
+
 func _set_current_spec(target):
 	if target != null:
 		var target_text = LogicSpec.get_text_of(target)
@@ -24,13 +26,15 @@ func _set_current_spec(target):
 
 	_current_spec = target
 
-func handle_input(event):
+func _unhandled_input(event):
+	if ignore_input:
+		return
+
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			_exit()
 
 func _exit():
-	print("???")
 	current_spec = null
 	exit.emit()
 

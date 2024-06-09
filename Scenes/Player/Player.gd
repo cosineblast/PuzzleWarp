@@ -30,6 +30,7 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
 	elif Input.is_action_just_pressed("ui_accept") and not ignore_input:
 		velocity.y += JUMP_VELOCITY
 
@@ -45,7 +46,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func handle_input(event):
+func _unhandled_input(event):
+	if ignore_input:
+		return
+
 	if event is InputEventMouseMotion:
 		_handleMouseMotion(event)
 
@@ -53,9 +57,6 @@ func handle_input(event):
 		_handleMouseClick(event)
 
 func _handleMouseMotion(event: InputEventMouseMotion):
-	if ignore_input:
-		return
-
 	var multiplier = 1.0/500.0
 
 	var change = event.relative * multiplier

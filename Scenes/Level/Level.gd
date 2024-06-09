@@ -38,8 +38,7 @@ func show_object_info(logic_object):
 
 	item_ui.current_object = logic_object
 
-	state = State.HANDLING_ITEM_UI
-	player.ignore_input = true
+	_switch_state(State.HANDLING_ITEM_UI)
 
 func hide_object_info():
 	print("Hiding object info")
@@ -52,7 +51,8 @@ func hide_object_info():
 
 	item_ui.current_object = null
 
-	state = State.HANDLING_PLAYER
+	_switch_state(State.HANDLING_PLAYER)
+
 
 	# this is a dirty fix to avoid the issue that
 	# when a same_space object collapses into one of its variants,
@@ -62,7 +62,6 @@ func hide_object_info():
 	# it collapses
 	player.drop_current_item()
 
-	player.ignore_input = false
 
 func show_target_info(target):
 	print("Showing info of target ", target)
@@ -76,8 +75,7 @@ func show_target_info(target):
 
 	target_ui.current_spec = target.spec
 
-	state = State.HANDLING_TARGET_UI
-	player.ignore_input = true
+	_switch_state(State.HANDLING_TARGET_UI)
 
 func hide_target_info():
 	print("Hiding object info")
@@ -90,14 +88,13 @@ func hide_target_info():
 
 	item_ui.current_object = null
 
-	state = State.HANDLING_PLAYER
-	player.ignore_input = false
+	_switch_state(State.HANDLING_PLAYER)
 
-func _unhandled_input(event):
-	if state == State.HANDLING_PLAYER:
-		player.handle_input(event)
-	if state == State.HANDLING_ITEM_UI:
-		item_ui.handle_input(event)
+func _switch_state(target: State):
+	target_ui.ignore_input = target != State.HANDLING_TARGET_UI
+	item_ui.ignore_input = target != State.HANDLING_ITEM_UI
+	player.ignore_input = target != State.HANDLING_PLAYER
+	state = target
 
 func _on_item_ui_exit():
 	if state == State.HANDLING_ITEM_UI:
