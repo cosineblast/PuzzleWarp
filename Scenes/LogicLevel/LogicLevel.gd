@@ -36,5 +36,3 @@ func _ready():
 		i += 1
 
 	# TODO: Add logic specs to targets
-
-

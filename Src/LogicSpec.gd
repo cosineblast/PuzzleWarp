@@ -44,4 +44,3 @@ static func spawn_object(spec):
 		{"type": "same_space", "left": var left, "right": var right}:
 			# TODO
 			return null
-

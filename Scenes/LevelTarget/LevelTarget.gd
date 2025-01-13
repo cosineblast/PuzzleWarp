@@ -51,4 +51,3 @@ func _process(delta):
 		return
 
 	_mesh_instance.rotate_y(delta)
-

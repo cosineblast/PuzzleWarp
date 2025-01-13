@@ -108,6 +108,3 @@ func pick_child(child: LogicObject):
 	child.transform = transform
 	get_parent().remove_child(self)
 	dead = true
-
-
-
