@@ -6,6 +6,8 @@ const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 var _spec
 
+signal matching_object_touched(object)
+
 @export
 var spec_string: String:
 	set(value):
@@ -51,3 +53,10 @@ func _process(delta):
 		return
 
 	_mesh_instance.rotate_y(delta)
+
+
+func _on_object_entered_area(body):
+
+	if body is LogicObject and body.get_spec() == _spec:
+		print("Mathcing logic object has entered target area: ", body)
+		matching_object_touched.emit(body)
