@@ -1,8 +1,5 @@
 extends CharacterBody3D
 
-const LogicObject = preload("res://Scenes/LogicObject/LogicObject.gd")
-const LevelTarget = preload("res://Scenes/LevelTarget/LevelTarget.gd")
-
 const SPEED = 7
 const JUMP_VELOCITY = 8
 
