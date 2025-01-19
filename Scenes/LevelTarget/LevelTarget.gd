@@ -6,6 +6,14 @@ const LogicSpec = preload("res://Src/LogicSpec.gd")
 
 var _spec
 
+var _closed = false
+
+var sprite
+
+var viewport_texture
+
+var closed_texture = load("res://Assets/self/closed_target.png")
+
 signal matching_object_touched(object)
 
 @export
@@ -14,6 +22,13 @@ var spec_string: String:
 		_set_spec(LogicSpec.parse(value))
 
 	get: return LogicSpec.get_text_of(_spec)
+
+@export
+var closed: bool:
+	set(value):
+		_set_closed(value)
+
+	get: return _closed
 
 var spec:
 	set(value): _set_spec(value)
@@ -48,6 +63,23 @@ func _set_spec(value):
 	_mesh_instance = mesh_instance
 
 
+# Defines whether the current target is active or closed.
+# When active, the target emits object_touched events when logic
+# objects matching the target's spec reaches its acceptance area.
+# When closed, the does not render the logic it accepts.
+func _set_closed(value):
+	if value and not _closed:
+		_closed = true
+		sprite.texture = closed_texture
+
+	elif not value and _closed:
+		_closed = false
+		sprite.texture = viewport_texture
+
+func _ready():
+	sprite = $Sprite3D
+	viewport_texture = sprite.texture
+
 func _process(delta):
 	if _mesh_instance == null:
 		return
@@ -58,5 +90,5 @@ func _process(delta):
 func _on_object_entered_area(body):
 
 	if body is LogicObject and body.get_spec() == _spec:
-		print("Mathcing logic object has entered target area: ", body)
+		print("ONE", body)
 		matching_object_touched.emit(body)
