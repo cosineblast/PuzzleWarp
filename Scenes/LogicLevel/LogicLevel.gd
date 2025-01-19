@@ -24,14 +24,21 @@ var outputs: Array[String]:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# When the level loads, we look at the 'Inputs' node 
+	# (which shall be added by the instantiator of this node)
+	# to find the logic objects this level receives as input
+
+	# then we take these input children and set their positions 
+	# to the ones of the input markers
+
 	var inputs_node = $Inputs
+
 	assert(inputs_node != null)
 
 	var i = 0
 
 	for child in inputs_node.get_children():
 		inputs.append(child)
-
 		child.position = input_markers[i].position
 		i += 1
 
