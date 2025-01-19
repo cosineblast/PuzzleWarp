@@ -22,8 +22,8 @@ enum State {HANDLING_PLAYER, HANDLING_ITEM_UI, HANDLING_TARGET_UI}
 var state = State.HANDLING_PLAYER
 
 func _ready():
-	player.view_object.connect(show_object_info)
-	player.view_target.connect(show_target_info)
+	player.asking_object_details.connect(show_object_info)
+	player.asking_target_details.connect(show_target_info)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func show_object_info(logic_object):

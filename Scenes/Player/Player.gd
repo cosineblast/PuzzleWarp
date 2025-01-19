@@ -18,9 +18,9 @@ var ignore_input = false
 
 var target_object: RigidBody3D = null
 
-signal view_object(object)
+signal asking_object_details(object)
 
-signal view_target(target)
+signal asking_target_details(target)
 
 
 func _physics_process(delta):
@@ -79,11 +79,11 @@ func _handleMouseClick(event: InputEventMouseButton):
 				var its_parent = collider.get_parent()
 
 				if its_parent is LevelTarget:
-					view_target.emit(its_parent)
+					asking_target_details.emit(its_parent)
 
 		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
 			if target_object != null:
-				view_object.emit(target_object)
+				asking_object_details.emit(target_object)
 
 
 func _pick_item(target: RigidBody3D):
