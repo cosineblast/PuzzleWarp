@@ -80,7 +80,7 @@ func _handleMouseClick(event: InputEventMouseButton):
 				var its_parent = collider.get_parent()
 
 				# you're not supposed to inspect a target if you're holding an item
-				if its_parent is LevelTarget and target_object == null:
+				if its_parent is LevelTarget and target_object == null and not its_parent.closed:
 					asking_target_details.emit(its_parent)
 
 		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
