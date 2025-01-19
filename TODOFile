@@ -1,8 +1,6 @@
 
-- Prevent showing target information or things like that if the player is holding an object
-
 - Consider makings things less fragile (e.g more functional and data-oriented). 
 
 - Rename Level to World (to conflict less with LogicLevel)
 
-- Make so that LogicLevel uses its 'outputs' field
+- Implement making logic objects disapear once targets are filled

@@ -14,6 +14,8 @@ var _output_markers: Array = [$Output1, $Output2, $Output3, $Output4, $Output5]
 
 var _output_specs: Array = []
 
+signal target_resolved(item)
+
 @export
 var outputs: Array[String]:
 	set(value):
@@ -28,8 +30,6 @@ var outputs: Array[String]:
 
 
 func _ready():
-
-
 	_load_targets()
 	_load_inputs()
 
@@ -37,7 +37,7 @@ func _ready():
 func _load_targets():
 	var i = 0
 
-	# right now the output count is limited to the number of output markers
+	# right now the output count and input count is limited to the number of output markers
 	assert(len(_output_specs) < len(_output_markers))
 
 	while i < len(_output_specs):
@@ -45,7 +45,9 @@ func _load_targets():
 		var target = LevelTargetScene.instantiate()
 		target.spec = spec
 
-		target.matching_object_touched.connect(func(_thing): 
+		target.matching_object_touched.connect(func(object: LogicObject): 
+			assert(object is LogicObject)
+			target_resolved.emit(object)
 			target.closed = true)
 
 		add_child(target)

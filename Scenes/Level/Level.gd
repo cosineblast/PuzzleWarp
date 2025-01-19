@@ -16,6 +16,9 @@ var item_ui = $ObjectGUIContainer/ObjectGUI/ItemUI
 @onready
 var target_ui = $ObjectGUIContainer/ObjectGUI/TargetUI
 
+@onready
+var logic_level = $LogicLevel
+
 # handling_player | handling_item_ui
 enum State {HANDLING_PLAYER, HANDLING_ITEM_UI, HANDLING_TARGET_UI}
 
@@ -24,7 +27,21 @@ var state = State.HANDLING_PLAYER
 func _ready():
 	player.asking_object_details.connect(show_object_info)
 	player.asking_target_details.connect(show_target_info)
+	logic_level.target_resolved.connect(on_target_resolved)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func on_target_resolved(object: LogicObject):
+	object.get_parent().remove_child(object)
+
+	# we don't want to show ui of items that got resolved. 
+
+	# alternatively, we could make so that targets are not resolved
+	# by items that are being held
+	if state == State.HANDLING_ITEM_UI:
+		if item_ui.current_object == object:
+			player.drop_current_item()
+			hide_object_info()
+
 
 func show_object_info(logic_object):
 	print("Showing info of ", logic_object)
@@ -58,8 +75,8 @@ func hide_object_info():
 	# when a same_space object collapses into one of its variants,
 	# it is erased, but the player is still holding the previous logic object
 	# the correct thing to do in this situation would probably be to
-	# make the same_space find the player and force it to drop, only when
-	# it collapses
+	# make the same_space signal someone it will be erased and the player getting to drop 
+	# its current item as a result 
 	player.drop_current_item()
 
 
