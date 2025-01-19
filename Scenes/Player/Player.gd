@@ -73,12 +73,14 @@ func _handleMouseClick(event: InputEventMouseButton):
 				_drop_item()
 
 			elif collider is LogicObject:
+				_drop_item()
 				_pick_item(collider)
 
 			elif collider is Area3D:
 				var its_parent = collider.get_parent()
 
-				if its_parent is LevelTarget:
+				# you're not supposed to inspect a target if you're holding an item
+				if its_parent is LevelTarget and target_object == null:
 					asking_target_details.emit(its_parent)
 
 		elif event.button_index == MouseButton.MOUSE_BUTTON_RIGHT:
@@ -87,7 +89,6 @@ func _handleMouseClick(event: InputEventMouseButton):
 
 
 func _pick_item(target: RigidBody3D):
-	_drop_item()
 	print("Picking object ", target)
 	target.assign_target_position(ideal_target_position)
 	target_object = target
