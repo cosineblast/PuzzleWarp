@@ -80,11 +80,6 @@ transform = Transform3D(0.227671, -0.852924, -0.469772, 0, 0.482442, -0.875928, 
 first_spec_string = "RedPrism"
 second_spec_string = "PurpleDisk"
 
-[node name="SameSpace2" parent="LogicLevel/Inputs" instance=ExtResource("7_2ayxb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944348, 0.727965)
-first_spec_string = "PurpleDisk"
-second_spec_string = "RedPrism"
-
 [node name="PurpleDiskLO" parent="LogicLevel/Inputs" instance=ExtResource("6_40vms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42159, 0.513864, 0)
 
