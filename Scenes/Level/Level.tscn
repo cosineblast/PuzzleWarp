@@ -71,7 +71,7 @@ visible = false
 visible = false
 
 [node name="LogicLevel" parent="." instance=ExtResource("7_boy3w")]
-outputs = Array[String](["PurpleDisk"])
+outputs = Array[String](["PurpleDisk", "RedPrism"])
 
 [node name="Inputs" type="Node3D" parent="LogicLevel"]
 
